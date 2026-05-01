@@ -31,21 +31,27 @@ a {
   color: #06b6d4;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+/* Grid background */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.30;
+
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+.grid-bg > div {
+  position: absolute;
+  inset: 0;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(6, 182, 212, 0.5);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.7);
+.content-wrapper,
+.page-shell {
+  position: relative;
+  z-index: 10;
 }
 
 /* Shared layout */
@@ -88,7 +94,7 @@ a {
   margin-bottom: 3rem;
 }
 
-/* Home project previews */
+/* Home cards */
 .project-preview {
   padding: 1.25rem;
   border: 1px solid rgba(51, 65, 85, 0.7);
@@ -135,21 +141,7 @@ a {
   border-radius: 1rem;
   background: rgba(15, 23, 42, 0.6);
   transition: all 0.25s ease;
-}
-
-
-.grid-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-
-  /* Fade OUT toward bottom */
-  background: linear-gradient(
-    to bottom,
-    rgba(2, 6, 23, 0) 0%,
-    rgba(2, 6, 23, 0.4) 60%,
-    rgba(2, 6, 23, 1) 100%
-  );
+  scroll-margin-top: 9rem;
 }
 
 .featured-project-card:hover {
@@ -223,6 +215,23 @@ a {
   margin-bottom: 1.25rem;
 }
 
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tech-tag-primary {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 0.375rem;
+  background: rgba(34, 211, 238, 0.08);
+  color: #67e8f9;
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
 .project-notes {
   display: flex;
   flex-direction: column;
@@ -243,6 +252,29 @@ a {
   color: #94a3b8;
   font-size: 0.9rem;
   line-height: 1.6;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #475569;
+  border-radius: 0.5rem;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  border-color: #22d3ee;
+  color: #22d3ee;
 }
 
 .featured-badge {

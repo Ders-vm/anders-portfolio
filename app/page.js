@@ -83,20 +83,20 @@ export default function Home() {
               </p>
 
               <div className="grid md:grid-cols-3 gap-6 mb-10">
-                <div className="project-preview">
+                <Link href="/projects#learned-index" className="project-preview">
                   <h3>Learned Index Structures</h3>
                   <p>Featured project exploring when learned indexes can outperform traditional B-Trees at larger scales.</p>
-                </div>
+                </Link>
 
-                <div className="project-preview">
+                <Link href="/projects#cannabiz-pos" className="project-preview">
                   <h3>Cannabiz POS</h3>
                   <p>Full-stack POS system focused on PostgreSQL workflows, inventory logic, and realistic generated test data.</p>
-                </div>
+                </Link>
 
-                <div className="project-preview">
+                <Link href="/projects#snek-ai" className="project-preview">
                   <h3>Snek AI</h3>
                   <p>Snake AI using pathfinding, Q-learning, and training changes that improved average score over time.</p>
-                </div>
+                </Link>
               </div>
 
               <Link href="/projects">

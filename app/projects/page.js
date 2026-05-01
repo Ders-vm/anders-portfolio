@@ -8,6 +8,7 @@ import { Github, ExternalLink } from 'lucide-react';
 export default function Projects() {
   const mainProjects = [
     {
+      id: 'learned-index',
       title: 'Learned Index Structures',
       description:
         'A database systems project focused on benchmarking learned index structures against traditional B-Trees to understand where prediction-based indexing becomes worthwhile.',
@@ -22,6 +23,7 @@ export default function Projects() {
       demo: '#',
     },
     {
+      id: 'cannabiz-pos',
       title: 'Cannabiz POS',
       description:
         'A collaborative full-stack point-of-sale system with inventory tracking, transaction handling, and database-driven retail workflows.',
@@ -36,6 +38,7 @@ export default function Projects() {
       demo: '#',
     },
     {
+      id: 'snek-ai',
       title: 'Snek AI',
       description:
         'A Snake AI project using A* pathfinding, Q-learning, and neural network training to improve survival and average score over time.',
@@ -66,6 +69,7 @@ export default function Projects() {
             <div className="featured-projects">
               {mainProjects.map((project, index) => (
                 <motion.article
+                  id={project.id}
                   key={project.title}
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
