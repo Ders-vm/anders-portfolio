@@ -39,10 +39,10 @@ export default function Home() {
                 <div className="md:col-span-2 space-y-6">
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.75 }} className="max-w-3xl">
                     <p className="text-slate-300 leading-relaxed mb-4">
-                      I’m a computer science student and developer who likes building practical things: database-heavy apps, performance experiments, and projects that mix software with real problem solving.
+                      I’m a computer science graduate and developer focused on building practical, data-driven systems. I enjoy working on database-heavy applications, performance experiments, and projects that solve real-world problems.
                     </p>
                     <p className="text-slate-300 leading-relaxed">
-                      My projects range from full-stack systems to learned index structures and a self-playing Snake AI. I like work where I can dig into how something behaves, improve it, and explain the tradeoffs clearly.
+                      My projects range from full-stack systems to learned index structures and a self-playing Snake AI. I’m particularly interested in understanding how systems behave at scale, improving them, and communicating the tradeoffs behind those decisions.
                     </p>
                   </motion.div>
 
