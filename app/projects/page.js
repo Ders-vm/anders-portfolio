@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 export default function Projects() {
   const mainProjects = [
@@ -14,13 +14,11 @@ export default function Projects() {
         'A database systems project focused on benchmarking learned index structures against traditional B-Trees to understand where prediction-based indexing becomes worthwhile.',
       tech: ['Python', 'NumPy', 'Machine Learning', 'Benchmarking'],
       image: '/projects/learned-index.png',
-      imageNote: 'Performance benchmark graph',
       built:
         'Implemented single-stage and recursive learned index models, then compared them against B-Trees across different dataset sizes and distributions.',
       learned:
         'Early results did not show much improvement, which made the added complexity seem questionable. Once we scaled to around 100 million keys, the learned index began to outperform. This taught me a lot about choosing the right tool for the job: B-Trees are strong general-purpose structures, but at the right scale, a specialized approach can be worth the effort.',
       github: 'https://github.com/Ders-vm/Learned-Index-Structures',
-      demo: '#',
     },
     {
       id: 'cannabiz-pos',
@@ -29,13 +27,11 @@ export default function Projects() {
         'A collaborative full-stack point-of-sale system with inventory tracking, transaction handling, and database-driven retail workflows.',
       tech: ['React', 'Node.js', 'Express', 'PostgreSQL'],
       image: '/projects/cannabiz-pos.png',
-      imageNote: 'Main POS dashboard screenshot',
       built:
         'Focused heavily on the database side of the project, including schema design and PostgreSQL scripts for generating large amounts of semi-realistic test data.',
       learned:
-        'This was my first major full-stack project and where a lot of the pieces started to click. I had a lot of fun generating realistic data at scale, and jokingly called that part my "money laundering code" because of how convincingly it simulated transactions. The repository name reflects an early naming mistake from the project, but the portfolio uses the cleaned-up project name.',
+        'This was my first major full-stack project and where a lot of the pieces started to click. I had a lot of fun generating realistic data at scale, and jokingly called that part my "money laundering code" because of how convincingly it simulated transactions.',
       github: 'https://github.com/JonathanDeleff/cannabuis',
-      demo: '#',
     },
     {
       id: 'snek-ai',
@@ -44,13 +40,33 @@ export default function Projects() {
         'A Snake AI project using A* pathfinding, Q-learning, and neural network training to improve survival and average score over time.',
       tech: ['Python', 'Pygame', 'A*', 'Q-Learning', 'Neural Networks'],
       image: '/projects/snek-ai.png',
-      imageNote: 'Average score improvement graph',
       built:
         'Started with a fully graphical training setup, then moved to a headless environment to speed up training. Added Q-learning and stored state data through a neural-network-based approach.',
       learned:
         'At first, the agent had no heuristics and was learning too slowly for the resources available. Giving it a small jumpstart made the training more practical. Watching the average score rise over time was one of the coolest parts because it genuinely felt like watching the system learn.',
       github: 'https://github.com/Ders-vm/Snek',
-      demo: '#',
+    },
+  ];
+
+  const moreProjects = [
+    {
+      title: 'Mapping Algorithms',
+      description:
+        '3D graph visualization and shortest-path / MST exploration using spatial data, including Dijkstra’s, Prim’s, and Kruskal’s algorithms.',
+      image: '/projects/mapping-algorithms.png',
+      github: 'https://github.com/Ders-vm/Mapping-Algorithms',
+    },
+    {
+      title: 'Excel/VBA Workflow Automation',
+      description:
+        'Built macro-enabled Excel tools to automate repetitive business processes, including data formatting and Word mail merge workflows. Reduced a process that previously took over an hour to under five minutes.',
+      label: 'Automation / VBA',
+    },
+    {
+      title: 'Snake in Excel',
+      description:
+        'A fully playable Snake game built inside a macro-enabled Excel workbook. It started as a challenge after a conversation about Excel’s limitations, and became a fun experiment in pushing the tool beyond its intended use.',
+      image: '/projects/excel-snake.png',
     },
   ];
 
@@ -58,8 +74,15 @@ export default function Projects() {
     <main className="page-shell">
       <section className="projects-section">
         <div className="max-content">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <h1 className="section-heading"><span className="accent">#</span> PROJECTS</h1>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="section-heading">
+              <span className="accent">#</span> PROJECTS
+            </h1>
+
             <div className="section-underline" />
 
             <p className="section-intro">
@@ -78,11 +101,12 @@ export default function Projects() {
                   className={`featured-project-card ${index === 0 ? 'featured-project-card-primary' : ''}`}
                 >
                   <div className="project-image-wrap">
-                    <Image src={project.image} alt={`${project.title} preview`} fill className="project-image" />
-                    <div className="project-image-fallback">
-                      <span>📊</span>
-                      <p>{project.imageNote}</p>
-                    </div>
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      fill
+                      className="project-image"
+                    />
                   </div>
 
                   <div className="project-content">
@@ -95,7 +119,9 @@ export default function Projects() {
 
                     <div className="tech-list">
                       {project.tech.map((tech) => (
-                        <span key={tech} className="tech-tag-primary">{tech}</span>
+                        <span key={tech} className="tech-tag-primary">
+                          {tech}
+                        </span>
                       ))}
                     </div>
 
@@ -112,24 +138,60 @@ export default function Projects() {
                     </div>
 
                     <div className="project-links">
-                      {project.github !== '#' && (
-                        <a href={project.github} className="project-link" target="_blank" rel="noreferrer">
-                          <Github size={15} />
-                          Code
-                        </a>
-                      )}
-
-                      {project.demo !== '#' && (
-                        <a href={project.demo} className="project-link" target="_blank" rel="noreferrer">
-                          <ExternalLink size={15} />
-                          Demo
-                        </a>
-                      )}
+                      <a href={project.github} className="project-link" target="_blank" rel="noreferrer">
+                        <Github size={15} />
+                        Code
+                      </a>
                     </div>
                   </div>
                 </motion.article>
               ))}
             </div>
+
+            <section className="more-work-section">
+              <h2 className="section-heading">
+                <span className="accent">#</span> MORE WORK
+              </h2>
+
+              <div className="section-underline" />
+
+              <p className="section-intro">
+                Smaller projects and experiments that show range across algorithms, automation, and creative problem solving.
+              </p>
+
+              <div className="more-work-grid">
+                {moreProjects.map((project) => (
+                  <article key={project.title} className="more-work-card">
+                    <div className="more-work-image-wrap">
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} preview`}
+                          fill
+                          className="more-work-image"
+                        />
+                      ) : (
+                        <div className="more-work-placeholder">
+                          {project.label}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="more-work-content">
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+
+                      {project.github && (
+                        <a href={project.github} className="project-link" target="_blank" rel="noreferrer">
+                          <Github size={14} />
+                          Code
+                        </a>
+                      )}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
           </motion.div>
         </div>
       </section>

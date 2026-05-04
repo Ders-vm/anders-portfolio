@@ -289,3 +289,80 @@ a {
   font-size: 0.7rem;
   vertical-align: middle;
 }
+.more-work-section {
+  margin-top: 6rem;
+}
+
+.more-work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 850px) {
+  .more-work-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.more-work-card {
+  overflow: hidden;
+  border: 1px solid rgba(51, 65, 85, 0.75);
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  transition: all 0.25s ease;
+}
+
+.more-work-card:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(15, 23, 42, 0.85);
+  transform: translateY(-2px);
+}
+
+.more-work-image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #020617;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.75);
+  overflow: hidden;
+}
+
+.more-work-image {
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem;
+}
+
+.more-work-content {
+  padding: 1.25rem;
+}
+
+.more-work-content h3 {
+  color: #22d3ee;
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.more-work-content p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.more-work-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.more-work-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #64748b;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  border-bottom: 1px solid rgba(51, 65, 85, 0.75);
+}
