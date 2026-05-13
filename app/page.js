@@ -42,18 +42,18 @@ export default function Home() {
                       I’m a computer science graduate and developer focused on building practical, data-driven systems. I enjoy working on database-heavy applications, performance experiments, and projects that solve real-world problems.
                     </p>
                     <p className="text-slate-300 leading-relaxed">
-                      My projects range from full-stack systems to learned index structures and a self-playing Snake AI. I’m particularly interested in understanding how systems behave at scale, improving them, and communicating the tradeoffs behind those decisions.
-                    </p>
+                       My projects range from full-stack systems to learned index structures and a self-playing Snake AI. I enjoy digging into how systems behave, figuring out where they break down, and improving them in practical ways.
+                    </p>  
                   </motion.div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9 }} className="info-box">
                       <h3 className="section-title">FOCUS AREAS</h3>
                       <ul className="space-y-2 text-slate-300 text-sm">
-                        <li>⚡ Backend systems and databases</li>
-                        <li>📊 Data-driven applications</li>
-                        <li>🤖 AI-assisted tools and automation</li>
-                        <li>🎮 Game AI and pathfinding</li>
+                        <li>Backend systems and databases</li>
+                        <li>Data-driven applications</li>
+                        <li>AI-assisted tools and automation</li>
+                        <li>Game AI and pathfinding</li>
                       </ul>
                     </motion.div>
 

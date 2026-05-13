@@ -1,11 +1,21 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Github } from 'lucide-react';
+import { Github, X } from 'lucide-react';
 
 export default function Projects() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const openImage = (src, title) => {
+    setSelectedImage({
+      src,
+      title,
+      alt: `${title} preview`,
+    });
+  };
+
   const mainProjects = [
     {
       id: 'learned-index',
@@ -101,12 +111,19 @@ export default function Projects() {
                   className={`featured-project-card ${index === 0 ? 'featured-project-card-primary' : ''}`}
                 >
                   <div className="project-image-wrap">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} preview`}
-                      fill
-                      className="project-image"
-                    />
+                    <button
+                      type="button"
+                      className="image-expand-button"
+                      onClick={() => openImage(project.image, project.title)}
+                      aria-label={`Expand ${project.title} image`}
+                    >
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        fill
+                        className="project-image"
+                      />
+                    </button>
                   </div>
 
                   <div className="project-content">
@@ -164,12 +181,19 @@ export default function Projects() {
                   <article key={project.title} className="more-work-card">
                     <div className="more-work-image-wrap">
                       {project.image ? (
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} preview`}
-                          fill
-                          className="more-work-image"
-                        />
+                        <button
+                          type="button"
+                          className="image-expand-button"
+                          onClick={() => openImage(project.image, project.title)}
+                          aria-label={`Expand ${project.title} image`}
+                        >
+                          <Image
+                            src={project.image}
+                            alt={`${project.title} preview`}
+                            fill
+                            className="more-work-image"
+                          />
+                        </button>
                       ) : (
                         <div className="more-work-placeholder">
                           {project.label}
@@ -195,6 +219,55 @@ export default function Projects() {
           </motion.div>
         </div>
       </section>
+
+<AnimatePresence>
+  {selectedImage && (
+    <motion.div
+      className="image-modal"
+      onClick={() => setSelectedImage(null)}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
+      <motion.button
+        type="button"
+        className="image-modal-close"
+        onClick={() => setSelectedImage(null)}
+        aria-label="Close image preview"
+        initial={{ opacity: 0, scale: 0.85 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.85 }}
+        transition={{ duration: 0.2 }}
+      >
+        <X size={24} />
+      </motion.button>
+
+      <motion.div
+        className="image-modal-content"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.88, y: 24 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.88, y: 24 }}
+        transition={{
+          duration: 0.35,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+      >
+        <p className="image-modal-title">{selectedImage.title}</p>
+
+        <div className="image-modal-frame">
+          <Image
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            fill
+            className="image-modal-img"
+          />
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
     </main>
   );
 }
