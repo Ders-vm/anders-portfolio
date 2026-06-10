@@ -37,7 +37,7 @@ export default function Contact() {
               <motion.a href="mailto:anders.von.93@gmail.com" whileHover={{ scale: 1.05, borderColor: '#06b6d4' }} className="p-6 border border-slate-700/50 rounded-lg bg-slate-900/50 text-center transition-all duration-300">
                 <Mail size={40} className="mx-auto mb-4 text-cyan-400" />
                 <h3 className="text-lg font-bold mb-2">Email</h3>
-                <p className="text-sm text-slate-400 break-words">anders.von.93@gmail.com</p>
+                <p className="text-sm text-slate-400 break-words">anders@vonmirbach.dev</p>
               </motion.a>
 
               <motion.a href="/resume/anders-von-mirbach-resume.pdf" target="_blank" rel="noreferrer" whileHover={{ scale: 1.05, borderColor: '#06b6d4' }} className="p-6 border border-slate-700/50 rounded-lg bg-slate-900/50 text-center transition-all duration-300">
